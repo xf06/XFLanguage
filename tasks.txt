@@ -1,0 +1,8 @@
+2016/04/30
+TASKS:
+
+1, Learn git
+2, Install ubuntu14.4 into virtualbox (server virsion)
+3, program C++ calculator
+
+
