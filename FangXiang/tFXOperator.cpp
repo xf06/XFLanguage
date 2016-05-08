@@ -35,7 +35,8 @@ tFXOperator::tFXOperator(std::string ch)
 	else
 	{
 		std::cout << "unrecognised operator "<<ch<<__FILE__<<__LINE__<<std::endl;
-		__asm{int 3}
+		//__asm{int 3}
+		__asm__("int3");
 	}
 }
 

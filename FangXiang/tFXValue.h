@@ -3,7 +3,6 @@
 #include <iostream>
 #include <string>
 #include "tFXOperator.h"
-#include "vld.h"
 
 class tFXValue
 {

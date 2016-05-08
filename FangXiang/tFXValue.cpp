@@ -1,6 +1,12 @@
 #include "tFXValue.h"
 #include "tFXOperator.h"
 #include <string>
+// this is for linux
+//###################
+#include <stdlib.h>
+#include <stdio.h>
+#include <math.h>
+//###################
 
 // parsing string
 tFXValue::tFXValue(std::string formula)
@@ -90,7 +96,7 @@ bool tFXValue::IsLeave(void) // leave node has value, branch node is empty
 		if (!this->EL.empty())
 		{
 			std::cout << "end node is not empty" << std::endl;
-			__asm{int 3}
+			__asm__("int3");
 		}
 		if (this->tEndNode(this->SL[0]))
 			return true;
@@ -201,7 +207,7 @@ void tFXValue::tFXParseSL(std::string formula)
 			opt_acm.clear();
 		};break;
 		// charactor cause to ignore
-		case '\s':
+		case ' ':
 		case '\t':; break;
 		// operator charactor
 		case '+':
@@ -317,7 +323,7 @@ void tFXValue::tFXParseEOE(void)
 				{
 					if (0){
 						std::cout << "+- , problem" << __FILE__ << __LINE__ << std::endl;
-						__asm{int 3}
+						__asm__("int3");
 					}
 				}
 			}
@@ -388,7 +394,7 @@ double tFXValue::tFXCalcu(void)
 			}else
 			{
 				std::cout <<"Error "<< "E:" << this->EL.size() << ", O:" << this->OL.size() << std::endl;
-				__asm{int 3};
+				__asm__("int3");
 			}
 		}
 		else
@@ -402,7 +408,7 @@ double tFXValue::tFXCalcu(void)
 			if (spliter==-1)
 			{
 				std::cout <<"ERROR spliter ==-1"<< std::endl;
-				__asm{int 3}
+				__asm__("int3");
 			}
 
 			std::vector <tFXValue>	SEL_A;
@@ -445,7 +451,7 @@ double tFXValue::tFXCalcu(void)
 			default:
 				{
 					std::cout <<"unrecognised sign char"<<this->OL[spliter].tFXPrintStr()<< std::endl;
-					__asm{int 3}
+					__asm__("int3");
 				};
 			}
 		}
@@ -570,6 +576,7 @@ void tFXValue::tErrorMappingComments(int merrno)
 	//case 10005: "";
 	}
 }
+
 
 
 
